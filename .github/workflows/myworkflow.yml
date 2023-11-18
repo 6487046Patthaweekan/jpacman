@@ -29,12 +29,12 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'adopt'
-        cache: gradle
+        distribution: 'temurin'
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
       run: xvfb-run ./gradlew build
+    
     - name: Generate JaCoCo Badge
       uses: cicirello/jacoco-badge-generator@v2
       with:
@@ -55,6 +55,7 @@ jobs:
           message: 'Updated JaCoCo badges'
           add: '.github/badges/*.svg'
     - name: Show test results
-    run: cat build/reports/jacoco/test/jacocoTestReport.csv
+      run: cat build/reports/jacoco/test/jacocoTestReport.csv
+
 
 
